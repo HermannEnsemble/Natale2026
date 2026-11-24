@@ -191,6 +191,8 @@
       margin: 0;
       font-size: var(--voci-font-size, 20px);
       white-space: nowrap;
+      width: max-content;
+      max-width: none;
     }
   </style>
 </head>
@@ -261,37 +263,40 @@
   function adattaNomiCoristi() {
 
     const contenitore = document.querySelector('.voci');
-    const nomi = document.querySelectorAll('.voci p');
+    const colonne = document.querySelectorAll('.voci > div');
 
-    if (!contenitore || !nomi.length) return;
+    if (!contenitore || !colonne.length) return;
 
     let minimo = 8;
     let massimo = 20;
-    let dimensione = massimo;
+    let dimensione = minimo;
 
-    // Verifica se tutti i nomi entrano
-    function entrano(testo) {
+    function entrano(size) {
 
       contenitore.style.setProperty(
         '--voci-font-size',
-        testo + 'px'
+        size + 'px'
       );
 
-      return Array.from(nomi).every(nome =>
-        nome.scrollWidth <= nome.clientWidth
-      );
+      return Array.from(colonne).every(colonna => {
+
+        const nomi = colonna.querySelector('p');
+
+        return nomi.getBoundingClientRect().width
+          <= colonna.getBoundingClientRect().width;
+
+      });
     }
 
-    // Ricerca della dimensione massima compatibile
-    while (minimo <= massimo) {
+    while (massimo - minimo > 0.1) {
 
-      let centro = (minimo + massimo) / 2;
+      const centro = (minimo + massimo) / 2;
 
       if (entrano(centro)) {
         dimensione = centro;
-        minimo = centro + 0.1;
+        minimo = centro;
       } else {
-        massimo = centro - 0.1;
+        massimo = centro;
       }
     }
 
@@ -301,19 +306,12 @@
     );
   }
 
-  // Esegui al caricamento
   window.addEventListener('load', adattaNomiCoristi);
+  window.addEventListener('resize', adattaNomiCoristi);
 
-  // Esegui quando cambia la larghezza disponibile
-  const osservatore = new ResizeObserver(() => {
-    adattaNomiCoristi();
-  });
-
-  osservatore.observe(document.querySelector('.voci'));
-
-  // Esegui anche dopo il caricamento dei font
-  document.fonts.ready.then(adattaNomiCoristi);
-
+  if (document.fonts) {
+    document.fonts.ready.then(adattaNomiCoristi);
+  }
 </script>
 
 
