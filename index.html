@@ -70,7 +70,7 @@
       width: 100%;
       max-width: 40rem;
       margin: 0 auto;
-      padding: 40px 36px 56px
+      padding: 40px 28px 56px
     }
 
     .top {
@@ -148,7 +148,10 @@
     }
 
     .t small {
-      font-size: 15px
+      display: inline-block;
+      max-width: 100%;
+      font-size: clamp(11px, 3.5vw, 15px);
+      line-height: 1.2;
     }
 
     .n {
@@ -193,6 +196,11 @@
       white-space: nowrap;
       width: max-content;
     }
+
+    .voci > div:nth-child(2) {
+      padding-right: 8px;
+    }
+
   </style>
 </head>
 
