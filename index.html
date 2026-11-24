@@ -42,6 +42,7 @@
 
     /* Grana sottile sovrapposta allo sfondo, senza interferire con i contenuti */
     body::before {
+      hyphens: none; /*non segna con trattino gli a capo*/
       content: "";
       position: fixed;
       inset: 0;
@@ -52,6 +53,7 @@
     }
 
     main {
+      width: 100%;
       max-width: 40rem;
       margin: 0 auto;
       padding: 40px 28px 56px
@@ -116,6 +118,12 @@
       text-align: center
     }
 
+    .p.m .c {
+      font-size: clamp(10px, 2.5vw, 14px);
+      letter-spacing: .02em;
+      white-space: nowrap;
+    }
+
     .c {
       display: block;
       font-size: 14px;
@@ -146,7 +154,7 @@
 
     .bio {
       text-align: justify;
-      hyphens: auto;
+      hyphens: none; /*non segna con trattino gli a capo*/
       margin: 0 0 1.1em
     }
 
