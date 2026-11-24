@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <title>Concerto di Natale – Hermann Ensemble</title>
+  <meta name="description" content="Programma di sala del Concerto di Natale di Hermann Ensemble.">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f4eb;
+      --ink: #111;
+      --muted: #555;
+      --accent: #8C2F39;
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    html {
+      scroll-padding-top: env(safe-area-inset-top, 0px);
+      scroll-behavior: smooth;
+      background: var(--bg)
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Times New Roman", Times, "Liberation Serif", serif;
+      font-size: 19px;
+      line-height: 1.45;
+      position: relative;
+      isolation: isolate;
+    }
+
+    /* Grana sottile sovrapposta allo sfondo, senza interferire con i contenuti */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      opacity: 0.12;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.5'/%3E%3C/svg%3E");
+    }
+
+    main {
+      max-width: 34rem;
+      margin: 0 auto;
+      padding: 40px 28px 56px
+    }
+
+    .top {
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      line-height: 1.35
+    }
+
+    .top b {
+      display: block;
+      font-weight: 400;
+      font-size: clamp(20px, 6.2vw, 28px)
+    }
+
+    .top span {
+      display: block;
+      font-size: clamp(16px, 4.8vw, 21px);
+      margin-top: 8px;
+      color: var(--muted)
+    }
+
+    .orn {
+      text-align: center;
+      color: var(--ink);
+      font-size: 22px;
+      line-height: 1;
+      margin: 34px 0 0
+    }
+
+    h1,
+    h2 {
+      font-weight: 400;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin: 10px 0 44px;
+      font-size: 24px
+    }
+
+    h2 {
+      margin-top: 72px
+    }
+
+    .p {
+      margin: 0 0 30px
+    }
+
+    .p.r {
+      text-align: right
+    }
+
+    .p.l {
+      text-align: left
+    }
+
+    .p.m {
+      text-align: center
+    }
+
+    .c {
+      display: block;
+      font-size: 14px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--muted)
+    }
+
+    .t {
+      display: block;
+      font-size: 21px;
+      margin-top: 2px
+    }
+
+    .t small {
+      font-size: 15px
+    }
+
+    .n {
+      display: block;
+      font-size: 14px;
+      color: var(--muted)
+    }
+
+    .n i {
+      font-style: italic
+    }
+
+    .bio {
+      text-align: justify;
+      hyphens: auto;
+      margin: 0 0 1.1em
+    }
+
+    .voci {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px 20px;
+      margin-top: 44px
+    }
+
+    .voci h3 {
+      font-weight: 400;
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 4px
+    }
+
+    .voci p {
+      margin: 0;
+      font-size: 20px
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <div class="top"><b>Hermann Ensemble</b><span>Concerto di Natale</span></div>
+    <div class="orn" aria-hidden="true">• • •</div>
+
+    <h1 id="programma">Programma</h1>
+
+    <p class="p r"><span class="c">Girolamo Frescobaldi (1583-1648)</span><span class="t">Hinno Ave Maris Stella</span>
+    </p>
+    <p class="p r"><span class="c">Arcangelo Corelli (1653-1713)</span><span class="t">Pastorale</span></p>
+    <p class="p l"><span class="c">Vlodymyr Yakymets (1974*)</span><span class="t">Precistaia diva</span></p>
+    <p class="p l"><span class="c">Gustav Holst (1874-1934)</span><span class="t">Lullay my liking</span></p>
+    <p class="p l"><span class="c">Bruno Bettinelli (1913-2004)</span><span class="t">Ninna nanna del bambin
+        Gesù</span><span class="n">da <i>Tre canti popolari lombardi</i></span></p>
+    <p class="p r"><span class="c">Domenico Zipoli (1688)</span><span class="t">Pastorale</span></p>
+    <p class="p l"><span class="c">Arr. Ernest Cervera (1891-1972)</span><span class="t">El noi de la mare</span></p>
+    <p class="p l"><span class="c">Anonimo</span><span class="t">Campanas de Belèn</span></p>
+    <p class="p r"><span class="c">Louis-Claude Daquin (1694-1772)</span><span class="t">Noel <small>Etranger sur les
+          jeaux d’anches sans tremblant en duo</small></span></p>
+    <p class="p m"><span class="c">Felix Mendelssohn (1809-1847)<br> arr. David Willcocks (1919-2013)</span><span
+        class="t">Hark! The herald angels sing</span></p>
+
+    <div class="orn" aria-hidden="true" style="margin-top:56px">• • •</div>
+    <h2 id="ensemble">Hermann Ensemble</h2>
+
+    <p class="bio"><b style="font-weight:400;text-transform:uppercase;letter-spacing:.04em">Hermann Ensemble</b> è un
+      gruppo amatoriale comprensivo di ensemble vocale e organo. Nasce da giovani accomunati dalla passione per la
+      musica e il canto corale, per alcuni anche oggetto di studio accademico.</p>
+    <p class="bio">Le scelte artistiche di repertorio alternano soprattutto brani di tradizione popolare ad altri
+      d’epoca rinascimentale e barocca; tuttavia, propongono anche opere d’autori moderni e contemporanei capaci di
+      esprimere un legame vivo con le radici storiche della propria musica.</p>
+
+    <div class="voci">
+      <div>
+        <h3>Soprani</h3>
+        <p>Marta Arzeni<br>Rebecca Luoni<br>Noemi Erba</p>
+      </div>
+      <div>
+        <h3>Tenori</h3>
+        <p>Alessandro Decursu<br>Giacomo Tessera<br>Matteo Trimarchi</p>
+      </div>
+      <div>
+        <h3>Contralti</h3>
+        <p>Giulia Pellicciotta<br>Beatrice Radice<br>Anna Tomatis</p>
+      </div>
+      <div>
+        <h3>Bassi</h3>
+        <p>Giovanni Arzeni<br>Pietro Bettega<br>Riccardo Saccone<br>Matteo Mammana</p>
+      </div>
+      <div>
+        <h3>Organista</h3>
+        <p>Tomaso Ganci</p>
+      </div>
+      <div>
+        <h3>Direttore</h3>
+        <p>Alessandro Villa</p>
+      </div>
+    </div>
+
+  </main>
+</body>
+
+</html>
