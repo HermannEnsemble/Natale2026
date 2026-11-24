@@ -171,7 +171,11 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 26px 20px;
-      margin-top: 44px
+      margin-top: 44px;
+      font-size: clamp(9px, 2.5vw, 14px);
+      letter-spacing: .02em;
+      color: var(--ink);
+      white-space: nowrap; /*così nessun nome di corista va mai a capo*/
     }
 
     .voci h3 {
