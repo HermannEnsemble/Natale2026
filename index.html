@@ -1,78 +1,224 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Concerto di Natale – Hermann Ensemble</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Alegreya+Sans:wght@400;500&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#F1F3EE; --ink:#1B2A22; --muted:#5B6B62; --accent:#8C2F39; --rule:#C9D0C6; --band:#1F3A2E; --band-ink:#EEF1EA;
-  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
-}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#13201A;--ink:#E8ECE5;--muted:#9FB0A5;--accent:#E58A93;--rule:#2F4439;--band:#0C1510;--band-ink:#EEF1EA;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#13201A;--ink:#E8ECE5;--muted:#9FB0A5;--accent:#E58A93;--rule:#2F4439;--band:#0C1510;--band-ink:#EEF1EA;color-scheme:dark}
-html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Alegreya Sans",system-ui,sans-serif;font-size:18px;line-height:1.5}
-header{background:var(--band);color:var(--band-ink);padding:44px 24px 36px;text-align:center}
-header p{margin:0;font-size:16px;opacity:.8}
-h1{font-family:"Cormorant Garamond",Georgia,serif;font-weight:700;font-size:clamp(40px,12vw,64px);line-height:1;margin:10px 0 14px;letter-spacing:.01em}
-nav{display:flex;justify-content:center;gap:28px;margin-top:22px}
-nav a{color:var(--band-ink);text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:2px;font-size:17px}
-nav a:focus-visible,nav a:hover{opacity:.75}
-main{max-width:34rem;margin:0 auto;padding:8px 24px 56px}
-h2{font-family:"Cormorant Garamond",Georgia,serif;font-size:32px;margin:40px 0 8px;color:var(--accent)}
-ol{list-style:none;margin:0;padding:0;counter-reset:n}
-li{counter-increment:n;display:grid;grid-template-columns:2rem 1fr;padding:16px 0;border-bottom:1px solid var(--rule)}
-li::before{content:counter(n);font-family:"Cormorant Garamond",Georgia,serif;font-size:24px;color:var(--accent);line-height:1.2}
-.c{font-weight:500;font-size:17px;display:block}
-.c small{color:var(--muted);font-weight:400;font-size:15px}
-.t{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:500;font-size:24px;line-height:1.2;display:block;margin-top:2px}
-.n{color:var(--muted);font-size:15px;display:block;margin-top:2px}
-p.bio{margin:0 0 1em}
-.voci{display:grid;grid-template-columns:1fr 1fr;gap:20px 16px;margin-top:24px}
-.voci h3{font-size:16px;font-weight:500;color:var(--muted);margin:0 0 4px}
-.voci p{margin:0}
-.solo{grid-column:1/-1}
-footer{text-align:center;color:var(--muted);font-size:15px;padding:0 24px 40px}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <title>Concerto di Natale – Hermann Ensemble</title>
+  <meta name="description" content="Programma di sala del Concerto di Natale di Hermann Ensemble.">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #fff7d9;
+      --ink: #111;
+      --muted: #555;
+      --accent: #8C2F39;
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    html {
+      scroll-padding-top: env(safe-area-inset-top, 0px);
+      scroll-behavior: smooth;
+      background: var(--bg)
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Times New Roman", Times, "Liberation Serif", serif;
+      font-size: 19px;
+      line-height: 1.45
+    }
+
+    main {
+      max-width: 34rem;
+      margin: 0 auto;
+      padding: 40px 28px 56px
+    }
+
+    .top {
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      line-height: 1.35
+    }
+
+    .top b {
+      display: block;
+      font-weight: 400;
+      font-size: clamp(20px, 6.2vw, 28px)
+    }
+
+    .top span {
+      display: block;
+      font-size: clamp(16px, 4.8vw, 21px);
+      margin-top: 8px;
+      color: var(--muted)
+    }
+
+    .orn {
+      text-align: center;
+      color: var(--ink);
+      font-size: 22px;
+      line-height: 1;
+      margin: 34px 0 0
+    }
+
+    h1,
+    h2 {
+      font-weight: 400;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin: 10px 0 44px;
+      font-size: 24px
+    }
+
+    h2 {
+      margin-top: 72px
+    }
+
+    .p {
+      margin: 0 0 30px
+    }
+
+    .p.r {
+      text-align: right
+    }
+
+    .p.l {
+      text-align: left
+    }
+
+    .p.m {
+      text-align: center
+    }
+
+    .c {
+      display: block;
+      font-size: 14px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--muted)
+    }
+
+    .t {
+      display: block;
+      font-size: 21px;
+      margin-top: 2px
+    }
+
+    .t small {
+      font-size: 15px
+    }
+
+    .n {
+      display: block;
+      font-size: 14px;
+      color: var(--muted)
+    }
+
+    .n i {
+      font-style: italic
+    }
+
+    .bio {
+      text-align: justify;
+      hyphens: auto;
+      margin: 0 0 1.1em
+    }
+
+    .voci {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px 20px;
+      margin-top: 44px
+    }
+
+    .voci h3 {
+      font-weight: 400;
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 4px
+    }
+
+    .voci p {
+      margin: 0;
+      font-size: 20px
+    }
+  </style>
 </head>
+
 <body>
-<header>
-  <p>Hermann Ensemble</p>
-  <h1>Concerto di Natale</h1>
-  <p>Ensemble vocale e organo</p>
-  <nav><a href="#programma">Programma</a><a href="#ensemble">Ensemble</a></nav>
-</header>
-<main>
-  <h2 id="programma">Programma</h2>
-  <ol>
-    <li><div><span class="c">Girolamo Frescobaldi <small>1583–1648</small></span><span class="t">Hinno Ave Maris Stella</span></div></li>
-    <li><div><span class="c">Arcangelo Corelli <small>1653–1713</small></span><span class="t">Pastorale</span></div></li>
-    <li><div><span class="c">Vlodymyr Yakymets <small>n. 1974</small></span><span class="t">Precistaia diva</span></div></li>
-    <li><div><span class="c">Gustav Holst <small>1874–1934</small></span><span class="t">Lullay my liking</span></div></li>
-    <li><div><span class="c">Bruno Bettinelli <small>1913–2004</small></span><span class="t">Ninna nanna del bambin Gesù</span><span class="n">da Tre canti popolari lombardi</span></div></li>
-    <li><div><span class="c">Domenico Zipoli <small>1688</small></span><span class="t">Pastorale</span></div></li>
-    <li><div><span class="c">Arr. Ernest Cervera <small>1891–1972</small></span><span class="t">El noi de la mare</span></div></li>
-    <li><div><span class="c">Anonimo</span><span class="t">Campanas de Belèn</span></div></li>
-    <li><div><span class="c">Louis-Claude Daquin <small>1694–1772</small></span><span class="t">Noel Etranger sur les jeaux d’anches sans tremblant en duo</span></div></li>
-    <li><div><span class="c">Felix Mendelssohn <small>1809–1847</small>, arr. David Willcocks <small>1919–2013</small></span><span class="t">Hark! The herald angels sing</span></div></li>
-  </ol>
+  <main>
+    <div class="top"><b>Hermann Ensemble</b><span>Concerto di Natale</span></div>
+    <div class="orn" aria-hidden="true">•</div>
 
-  <h2 id="ensemble">Hermann Ensemble</h2>
-  <p class="bio">Gruppo amatoriale comprensivo di ensemble vocale e organo. Nasce da giovani accomunati dalla passione per la musica e il canto corale, per alcuni anche oggetto di studio accademico.</p>
-  <p class="bio">Le scelte artistiche di repertorio alternano soprattutto brani di tradizione popolare ad altri d’epoca rinascimentale e barocca; tuttavia, propongono anche opere d’autori moderni e contemporanei capaci di esprimere un legame vivo con le radici storiche della propria musica.</p>
+    <h1 id="programma">Programma</h1>
 
-  <div class="voci">
-    <div><h3>Soprani</h3><p>Marta Arzeni<br>Rebecca Luoni<br>Noemi Erba</p></div>
-    <div><h3>Contralti</h3><p>Giulia Pellicciotta<br>Beatrice Radice<br>Anna Tomatis</p></div>
-    <div><h3>Tenori</h3><p>Alessandro Decursu<br>Giacomo Tessera<br>Matteo Trimarchi</p></div>
-    <div><h3>Bassi</h3><p>Giovanni Arzeni<br>Pietro Bettega<br>Riccardo Saccone<br>Matteo Mammana</p></div>
-    <div><h3>Organista</h3><p>Tomaso Ganci</p></div>
-    <div><h3>Direttore</h3><p>Alessandro Villa</p></div>
-  </div>
-</main>
-<footer>Buon Natale e buon ascolto</footer>
+    <p class="p r"><span class="c">Girolamo Frescobaldi (1583-1648)</span><span class="t">Hinno Ave Maris Stella</span>
+    </p>
+    <p class="p r"><span class="c">Arcangelo Corelli (1653-1713)</span><span class="t">Pastorale</span></p>
+    <p class="p l"><span class="c">Vlodymyr Yakymets (1974*)</span><span class="t">Precistaia diva</span></p>
+    <p class="p l"><span class="c">Gustav Holst (1874-1934)</span><span class="t">Lullay my liking</span></p>
+    <p class="p l"><span class="c">Bruno Bettinelli (1913-2004)</span><span class="t">Ninna nanna del bambin
+        Gesù</span><span class="n">da <i>Tre canti popolari lombardi</i></span></p>
+    <p class="p r"><span class="c">Domenico Zipoli (1688)</span><span class="t">Pastorale</span></p>
+    <p class="p l"><span class="c">Arr. Ernest Cervera (1891-1972)</span><span class="t">El noi de la mare</span></p>
+    <p class="p l"><span class="c">Anonimo</span><span class="t">Campanas de Belèn</span></p>
+    <p class="p r"><span class="c">Louis-Claude Daquin (1694-1772)</span><span class="t">Noel <small>Etranger sur les
+          jeaux d’anches sans tremblant en duo</small></span></p>
+    <p class="p m"><span class="c">Felix Mendelssohn (1809-1847), arr. David Willcocks (1919-2013)</span><span
+        class="t">Hark! The herald angels sing</span></p>
+
+    <div class="orn" aria-hidden="true" style="margin-top:56px">•</div>
+    <h2 id="ensemble">Hermann Ensemble</h2>
+
+    <p class="bio"><b style="font-weight:400;text-transform:uppercase;letter-spacing:.04em">Hermann Ensemble</b> è un
+      gruppo amatoriale comprensivo di ensemble vocale e organo. Nasce da giovani accomunati dalla passione per la
+      musica e il canto corale, per alcuni anche oggetto di studio accademico.</p>
+    <p class="bio">Le scelte artistiche di repertorio alternano soprattutto brani di tradizione popolare ad altri
+      d’epoca rinascimentale e barocca; tuttavia, propongono anche opere d’autori moderni e contemporanei capaci di
+      esprimere un legame vivo con le radici storiche della propria musica.</p>
+
+    <div class="voci">
+      <div>
+        <h3>Soprani</h3>
+        <p>Marta Arzeni<br>Rebecca Luoni<br>Noemi Erba</p>
+      </div>
+      <div>
+        <h3>Tenori</h3>
+        <p>Alessandro Decursu<br>Giacomo Tessera<br>Matteo Trimarchi</p>
+      </div>
+      <div>
+        <h3>Contralti</h3>
+        <p>Giulia Pellicciotta<br>Beatrice Radice<br>Anna Tomatis</p>
+      </div>
+      <div>
+        <h3>Bassi</h3>
+        <p>Giovanni Arzeni<br>Pietro Bettega<br>Riccardo Saccone<br>Matteo Mammana</p>
+      </div>
+      <div>
+        <h3>Organista</h3>
+        <p>Tomaso Ganci</p>
+      </div>
+      <div>
+        <h3>Direttore</h3>
+        <p>Alessandro Villa</p>
+      </div>
+    </div>
+
+  </main>
 </body>
+
 </html>
