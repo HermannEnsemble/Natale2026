@@ -192,7 +192,6 @@
       font-size: var(--voci-font-size, 20px);
       white-space: nowrap;
       width: max-content;
-      max-width: none;
     }
   </style>
 </head>
@@ -260,58 +259,52 @@
 
 <!-- MINI JAVASCRIPT PER DIMENSIONE DEI NOMI DEI CORISTI, di modo che si adattino a schermi cellulari-->
 <script>
-  function adattaNomiCoristi() {
+function adattaNomiCoristi() {
+  const contenitore = document.querySelector('.voci');
 
-    const contenitore = document.querySelector('.voci');
-    const colonne = document.querySelectorAll('.voci > div');
+  if (!contenitore) return;
 
-    if (!contenitore || !colonne.length) return;
+  const colonne = [...contenitore.children];
 
-    let minimo = 8;
-    let massimo = 20;
-    let dimensione = minimo;
+  let minimo = 6;
+  let massimo = 20;
 
-    function entrano(size) {
-
-      contenitore.style.setProperty(
-        '--voci-font-size',
-        size + 'px'
-      );
-
-      return Array.from(colonne).every(colonna => {
-
-        const nomi = colonna.querySelector('p');
-
-        return nomi.getBoundingClientRect().width
-          <= colonna.getBoundingClientRect().width;
-
-      });
-    }
-
-    while (massimo - minimo > 0.1) {
-
-      const centro = (minimo + massimo) / 2;
-
-      if (entrano(centro)) {
-        dimensione = centro;
-        minimo = centro;
-      } else {
-        massimo = centro;
-      }
-    }
-
+  function entrano(dimensione) {
     contenitore.style.setProperty(
       '--voci-font-size',
       dimensione + 'px'
     );
+
+    return colonne.every(colonna => {
+      const nomi = colonna.querySelector('p');
+
+      return nomi.getBoundingClientRect().width
+        <= colonna.clientWidth;
+    });
   }
 
-  window.addEventListener('load', adattaNomiCoristi);
-  window.addEventListener('resize', adattaNomiCoristi);
+  for (let i = 0; i < 25; i++) {
+    const centro = (minimo + massimo) / 2;
 
-  if (document.fonts) {
-    document.fonts.ready.then(adattaNomiCoristi);
+    if (entrano(centro)) {
+      minimo = centro;
+    } else {
+      massimo = centro;
+    }
   }
+
+  contenitore.style.setProperty(
+    '--voci-font-size',
+    minimo + 'px'
+  );
+}
+
+window.addEventListener('load', adattaNomiCoristi);
+window.addEventListener('resize', adattaNomiCoristi);
+
+if (document.fonts) {
+  document.fonts.ready.then(adattaNomiCoristi);
+}
 </script>
 
 
