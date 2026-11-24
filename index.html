@@ -184,16 +184,13 @@
       letter-spacing: .14em;
       text-transform: uppercase;
       color: var(--accent);
-      margin: 0 0 4px
+      margin: 0 0 4px;
     }
 
     .voci p {
       margin: 0;
-      font-size: clamp(11px, 3.5vw, 20px);
+      font-size: var(--voci-font-size, 20px);
       white-space: nowrap;
-      letter-spacing: -0.04em;
-      transform: scaleX(0.9);
-      transform-origin: left;
     }
   </style>
 </head>
@@ -258,6 +255,69 @@
     </div>
 
   </main>
+
+<!-- MINI JAVASCRIPT PER DIMENSIONE DEI NOMI DEI CORISTI, di modo che si adattino a schermi cellulari-->
+<script>
+  function adattaNomiCoristi() {
+
+    const contenitore = document.querySelector('.voci');
+    const nomi = document.querySelectorAll('.voci p');
+
+    if (!contenitore || !nomi.length) return;
+
+    let minimo = 8;
+    let massimo = 20;
+    let dimensione = massimo;
+
+    // Verifica se tutti i nomi entrano
+    function entrano(testo) {
+
+      contenitore.style.setProperty(
+        '--voci-font-size',
+        testo + 'px'
+      );
+
+      return Array.from(nomi).every(nome =>
+        nome.scrollWidth <= nome.clientWidth
+      );
+    }
+
+    // Ricerca della dimensione massima compatibile
+    while (minimo <= massimo) {
+
+      let centro = (minimo + massimo) / 2;
+
+      if (entrano(centro)) {
+        dimensione = centro;
+        minimo = centro + 0.1;
+      } else {
+        massimo = centro - 0.1;
+      }
+    }
+
+    contenitore.style.setProperty(
+      '--voci-font-size',
+      dimensione + 'px'
+    );
+  }
+
+  // Esegui al caricamento
+  window.addEventListener('load', adattaNomiCoristi);
+
+  // Esegui quando cambia la larghezza disponibile
+  const osservatore = new ResizeObserver(() => {
+    adattaNomiCoristi();
+  });
+
+  osservatore.observe(document.querySelector('.voci'));
+
+  // Esegui anche dopo il caricamento dei font
+  document.fonts.ready.then(adattaNomiCoristi);
+
+</script>
+
+
+
 </body>
 
 </html>
