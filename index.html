@@ -55,9 +55,12 @@
     body::after {
       /*provo a mettere una cornice: */
       content: "";
-      position: fixed;
-      inset: 16px;
-      border: 10px solid #8C2F39;
+      position: absolute;
+      inset: max(12px, env(safe-area-inset-top))
+         max(12px, env(safe-area-inset-right))
+         max(12px, env(safe-area-inset-bottom))
+         max(12px, env(safe-area-inset-left));
+      border: 5px solid var(--accent);
       pointer-events: none;
       z-index: 9999;
     }
