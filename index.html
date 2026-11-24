@@ -189,7 +189,11 @@
 
     .voci p {
       margin: 0;
-      font-size: 20px
+      font-size: clamp(11px, 3.5vw, 20px);
+      white-space: nowrap;
+      letter-spacing: -0.04em;
+      transform: scaleX(0.9);
+      transform-origin: left;
     }
   </style>
 </head>
@@ -199,7 +203,7 @@
     <div class="top"><b>THERE WAS MICKLE MELODY</b><span>Concerto di Natale</span></div>
     <!--<div class="orn" aria-hidden="true">---</div>-->
 
-    <h1 id="programma">Programma</h1>
+    <h1 id="programma"><u>Programma</u></h1>
 
     <p class="p r"><span class="c">GIROLAMO FRESCOBALDI (1583-1648)</span><span class="t">Hinno Ave Maris Stella</span>
     </p>
