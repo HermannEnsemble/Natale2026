@@ -25,7 +25,7 @@
       background: var(--bg)
     }
 
-    * {
+    * { /* faccio stare tutto nel border-box */
       box-sizing: border-box
     }
 
@@ -40,9 +40,9 @@
       isolation: isolate;
     }
 
-    /* Grana sottile sovrapposta allo sfondo, senza interferire con i contenuti */
-    body::before {
-      hyphens: none; /*non segna con trattino gli a capo*/
+    
+    body::before { /* GRANA SOVRAPPOSTA A SFONDO, STILE CARTA */
+      hyphens: none; /*toglie sillabazione, ovvero, non segna con trattino gli a capo*/
       content: "";
       position: fixed;
       inset: 0;
@@ -52,8 +52,7 @@
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.5'/%3E%3C/svg%3E");
     }
 
-    body::after {
-      /*provo a mettere una cornice: */
+    body::after { /* CORNICE */
       content: "";
       position: absolute;
       /*per assicurarmi che cornice stia nei monitor di ogni tipo di cellulare*/
@@ -66,33 +65,34 @@
       z-index: 9999;
     }
 
-    main {
+    main { /*su tutto quanto*/
       width: 100%;
       max-width: 40rem;
       margin: 0 auto;
       padding: 40px 28px 56px
     }
 
-    .top {
+    .top { /* "there was mickle melody + concerto di natale" */
       text-align: center;
       text-transform: uppercase;
       letter-spacing: .1em;
       line-height: 1.35
     }
 
-    .top b {
+    .top b { /*  "THERE WAS MICKLE MELODY" */
       display: block;
       font-weight: 400;
       font-size: clamp(20px, 6.2vw, 28px)
     }
 
-    .top span {
+    .top span { /* "CONCERTO DI NATALE" */
       display: block;
       font-size: clamp(16px, 4.8vw, 21px);
       margin-top: 8px;
       color: var(--accent)
     }
 
+    /* separatori sezioni, ornamentali
     .orn {
       text-align: center;
       color: var(--ink);
@@ -100,9 +100,10 @@
       line-height: 1;
       margin: 34px 0 0
     }
+    */
 
     h1,
-    h2 {
+    h2 { /* I DUE TITOLONI */
       font-weight: 400;
       text-align: center;
       text-transform: uppercase;
@@ -112,7 +113,7 @@
       color: var(--accent)
     }
 
-    h2 {
+    h2 { /* "PROGRAMMA" */
       margin-top: 72px
     }
 
@@ -124,14 +125,6 @@
       text-align: right
     }
 
-    .noel {
-      /*padding-right: 4px;*/
-      margin-right: 8px;
-      display:inline-block;
-      font-size: 12px;
-      white-space: nowrap;
-    }
-
     .p.l {
       text-align: left
     }
@@ -140,7 +133,7 @@
       text-align: center
     }
 
-    .c {
+    .c { /*nomi autori*/
       display: block;
       font-size: clamp(9px, 2.5vw, 14px);
       letter-spacing: .02em;
@@ -149,19 +142,27 @@
       white-space: nowrap; /*così nessun nome di autore va mai a capo*/
     }
 
-    .t {
+    .t { /*titoli brani*/
       display: block;
       font-size: 21px;
       margin-top: 2px
     }
 
-    .t small {
+    .t small { /*sottotitolo Noel*/
       display: block;
       width: 100%;
       box-sizing: border-box;
       text-align: right;
-      padding-right: 10px;
+      padding-right: 8px;
       font-size: clamp(11px, 3vw, 13px);
+      white-space: nowrap;
+    }
+
+    .noel { /*sottotitoletto francese di Noel*/
+      /*padding-right: 4px;*/
+      margin-right: 8px;
+      display:inline-block;
+      font-size: 12px;
       white-space: nowrap;
     }
 
@@ -175,13 +176,13 @@
       font-style: italic
     }
 
-    .bio {
+    .bio { /*descrizione coro*/
       text-align: justify;
       hyphens: none; /*non segna con trattino gli a capo*/
       margin: 0 0 1.1em
     }
 
-    .voci {
+    .voci { /*tutta sezione info su coro*/
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 26px 20px;
@@ -192,7 +193,7 @@
       white-space: nowrap; /*così nessun nome di corista va mai a capo*/
     }
 
-    .voci h3 {
+    .voci h3 { /*nomi reparti coro*/
       font-weight: 400;
       font-size: 12px;
       letter-spacing: .14em;
@@ -201,14 +202,14 @@
       margin: 0 0 4px;
     }
 
-    .voci p {
+    .voci p { /*nomi coristi*/
       margin: 0;
       font-size: var(--voci-font-size, 20px);
       white-space: nowrap;
       width: max-content;
     }
 
-    .voci > div:nth-child(2) {
+    .voci > div:nth-child(2) { /*larghezza colonne di nomi coristi*/
       padding-right: 8px;
     }
 
@@ -277,57 +278,54 @@
   </main>
 
 <!-- MINI JAVASCRIPT PER DIMENSIONE DEI NOMI DEI CORISTI, di modo che si adattino a schermi cellulari-->
-<script>
-function adattaNomiCoristi() {
-  const contenitore = document.querySelector('.voci');
+  <script>
+  function adattaNomiCoristi() {
+    const contenitore = document.querySelector('.voci');
 
-  if (!contenitore) return;
+    if (!contenitore) return;
 
-  const colonne = [...contenitore.children];
+    const colonne = [...contenitore.children];
 
-  let minimo = 6;
-  let massimo = 20;
+    let minimo = 6;
+    let massimo = 20;
 
-  function entrano(dimensione) {
+    function entrano(dimensione) {
+      contenitore.style.setProperty(
+        '--voci-font-size',
+        dimensione + 'px'
+      );
+
+      return colonne.every(colonna => {
+        const nomi = colonna.querySelector('p');
+
+        return nomi.getBoundingClientRect().width
+          <= colonna.clientWidth;
+      });
+    }
+
+    for (let i = 0; i < 25; i++) {
+      const centro = (minimo + massimo) / 2;
+
+      if (entrano(centro)) {
+        minimo = centro;
+      } else {
+        massimo = centro;
+      }
+    }
+
     contenitore.style.setProperty(
       '--voci-font-size',
-      dimensione + 'px'
+      minimo + 'px'
     );
-
-    return colonne.every(colonna => {
-      const nomi = colonna.querySelector('p');
-
-      return nomi.getBoundingClientRect().width
-        <= colonna.clientWidth;
-    });
   }
 
-  for (let i = 0; i < 25; i++) {
-    const centro = (minimo + massimo) / 2;
+  window.addEventListener('load', adattaNomiCoristi);
+  window.addEventListener('resize', adattaNomiCoristi);
 
-    if (entrano(centro)) {
-      minimo = centro;
-    } else {
-      massimo = centro;
-    }
+  if (document.fonts) {
+    document.fonts.ready.then(adattaNomiCoristi);
   }
-
-  contenitore.style.setProperty(
-    '--voci-font-size',
-    minimo + 'px'
-  );
-}
-
-window.addEventListener('load', adattaNomiCoristi);
-window.addEventListener('resize', adattaNomiCoristi);
-
-if (document.fonts) {
-  document.fonts.ready.then(adattaNomiCoristi);
-}
-</script>
-
-
+  </script>
 
 </body>
-
 </html>
