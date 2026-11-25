@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <title>Concerto di Natale – Hermann Ensemble</title>
+  <meta name="description" content="Programma di sala del Concerto di Natale di Hermann Ensemble.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f7e3;
+      --ink: #4a3d37;
+      --muted: #6d6453;
+      --accent: #000;
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    html {
+      scroll-padding-top: env(safe-area-inset-top, 0px);
+      scroll-behavior: smooth;
+      background: var(--bg)
+    }
+
+    * { /* faccio stare tutto nel border-box */
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+      font-size: 21px;
+      font-weight: 500;
+      line-height: 1.45;
+      position: relative;
+      isolation: isolate;
+    }
+
+    
+    body::before { /* GRANA SOVRAPPOSTA A SFONDO, STILE CARTA */
+      hyphens: none; /*toglie sillabazione, ovvero, non segna con trattino gli a capo*/
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      opacity: 0.8; 
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.5'/%3E%3C/svg%3E");
+    }
+
+    body::after { /* CORNICE */
+      content: "";
+      position: absolute;
+      /*per assicurarmi che cornice stia nei monitor di ogni tipo di cellulare*/
+      inset: max(12px, env(safe-area-inset-top))
+         max(12px, env(safe-area-inset-right))
+         max(12px, env(safe-area-inset-bottom))
+         max(12px, env(safe-area-inset-left));
+      border: 1px solid var(--accent);
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    main { /*su tutto quanto*/
+      width: 100%;
+      max-width: 40rem;
+      margin: 0 auto;
+      padding: 40px 24px 56px
+    }
+
+    .top { /* "there was mickle melody + concerto di natale" */
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      line-height: 1.35
+    }
+
+    .top b { /*  "THERE WAS MICKLE MELODY" */
+      display: block;
+      font-weight: 600;
+      font-size: clamp(24px, 7vw, 34px);
+      text-wrap: balance
+    }
+
+    .top span { /* "CONCERTO DI NATALE" */
+      display: block;
+      font-size: clamp(18px, 5vw, 22px);
+      font-weight: 700;
+      margin-top: 8px;
+      color: var(--accent)
+    }
+
+    /* separatori sezioni, ornamentali
+    .orn {
+      text-align: center;
+      color: var(--ink);
+      font-size: 22px;
+      line-height: 1;
+      margin: 34px 0 0
+    }
+    */
+
+    h1,
+    h2 { /* I DUE TITOLONI */
+      font-weight: 600;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin: 10px 0 44px;
+      font-size: 26px;
+      color: var(--accent)
+    }
+
+    h2 { /* "PROGRAMMA" */
+      margin-top: 72px
+    }
+
+    .p {
+      margin: 0 0 30px
+    }
+
+    .p.r {
+      text-align: right
+    }
+
+    .p.l {
+      text-align: left
+    }
+
+    .p.m {
+      text-align: center
+    }
+
+    .c { /*nomi autori*/
+      display: block;
+      /* la dimensione è regolata dallo script adattaAutori(); il clamp è il ripiego iniziale */
+      font-size: var(--autori-font-size, clamp(12px, 3.5vw, 15px));
+      font-weight: 600;
+      letter-spacing: .02em;
+      /*text-transform: uppercase;*/
+      color: var(--muted);
+      white-space: nowrap; /*così nessun nome di autore va mai a capo*/
+    }
+
+    .t { /*titoli brani*/
+      display: block;
+      font-size: 24px;
+      font-weight: 700;
+      margin-top: 2px
+    }
+
+    .t small { /*sottotitolo Noel*/
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      text-align: right;
+      padding-right: 8px;
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 1.25;
+      text-wrap: balance;
+    }
+
+    .n {
+      display: block;
+      font-size: 16px;
+      color: var(--muted)
+    }
+
+    .n i {
+      font-style: italic
+    }
+
+    .bio { /*descrizione coro*/
+      text-align: justify;
+      hyphens: none; /*non segna con trattino gli a capo*/
+      margin: 0 0 1.1em
+    }
+
+    @media (max-width: 480px) { /* su telefono il giustificato senza sillabazione crea buchi */
+      .bio { text-align: left }
+    }
+
+    .voci { /*tutta sezione info su coro*/
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 26px 20px;
+      margin-top: 44px;
+      font-size: clamp(9px, 2.5vw, 14px);
+      letter-spacing: .02em;
+      color: var(--ink);
+      white-space: nowrap; /*così nessun nome di corista va mai a capo*/
+    }
+
+    .voci h3 { /*nomi reparti coro*/
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 4px;
+    }
+
+    .voci p { /*nomi coristi*/
+      margin: 0;
+      font-size: var(--voci-font-size, 20px);
+      font-weight: 600;
+      white-space: nowrap;
+      width: max-content;
+    }
+
+    .voci > div:nth-child(2) { /*larghezza colonne di nomi coristi*/
+      padding-right: 8px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <main>
+    <div class="top"><b>THERE WAS MICKLE MELODY</b><span>Concerto di Natale</span></div>
+    <!--<div class="orn" aria-hidden="true">---</div>-->
+
+    <h1 id="programma">Programma</h1>
+
+    <p class="p r"><span class="c">GIROLAMO FRESCOBALDI (1583-1648)</span><span class="t">Hinno Ave Maris Stella</span>
+    </p>
+    <p class="p r"><span class="c">ARCANGELO CORELLI (1653-1713)</span><span class="t">Pastorale</span></p>
+    <p class="p l"><span class="c">VLODYMYR YAKYMETS (1974*)</span><span class="t">Precistaia diva</span></p>
+    <p class="p l"><span class="c">GUSTAV HOLST (1874-1934)</span><span class="t">Lullay my liking</span></p>
+    <p class="p l"><span class="c">BRUNO BETTINELLI (1913-2004)</span><span class="t">Ninna nanna del bambin
+        Gesù</span><span class="n">da <i>Tre canti popolari lombardi</i></span></p>
+    <p class="p r"><span class="c">DOMENICO ZIPOLI (1688-1726)</span><span class="t">Pastorale</span></p>
+    <p class="p l"><span class="c">Arr. ERNEST CERVERA (1891-1972)</span><span class="t">El noi de la mare</span></p>
+    <p class="p l"><span class="c">ANONIMO</span><span class="t">Campanas de Belèn</span></p>
+    <p class="p r"><span class="c">LOUIS-CLAUDE DAQUIN (1694-1772)</span><span class="t">Noel <small class="noel">Etranger sur les
+          jeaux d’anches sans tremblant en duo</small></span></p>
+    <p class="p m"><span class="c">FELIX MENDELSSOHN (1809-1847), Arr. DAVID WILLCOCKS (1919-2013)</span><span
+        class="t">Hark! The herald angels sing</span></p>
+
+    <!-- <div class="orn" aria-hidden="true" style="margin-top:56px">---</div> -->
+    <h2 id="ensemble">Hermann Ensemble</h2>
+
+    <p class="bio"><b style="font-weight:700;text-transform:uppercase;letter-spacing:.04em">Hermann Ensemble</b> è un
+      gruppo amatoriale comprensivo di ensemble vocale e organo. Nasce da giovani accomunati dalla passione per la
+      musica e il canto corale, per alcuni anche oggetto di studio accademico.</p>
+    <p class="bio">Le scelte artistiche di repertorio alternano soprattutto brani di tradizione popolare ad altri
+      d’epoca rinascimentale e barocca; tuttavia, propongono anche opere d’autori moderni e contemporanei capaci di
+      esprimere un legame vivo con le radici storiche della propria musica.</p>
+
+    <div class="voci">
+      <div>
+        <h3>Soprani</h3>
+        <p>Marta Arzeni<br>Rebecca Luoni<br>Noemi Erba</p>
+      </div>
+      <div>
+        <h3>Tenori</h3>
+        <p>Alessandro Decursu<br>Giacomo Tessera<br>Matteo Trimarchi</p>
+      </div>
+      <div>
+        <h3>Contralti</h3>
+        <p>Giulia Pellicciotta<br>Beatrice Radice<br>Anna Tomatis</p>
+      </div>
+      <div>
+        <h3>Bassi</h3>
+        <p>Giovanni Arzeni<br>Pietro Bettega<br>Riccardo Saccone<br>Matteo Mammana</p>
+      </div>
+      <div>
+        <h3>Organista</h3>
+        <p>Tomaso Ganci</p>
+      </div>
+      <div>
+        <h3>Direttore</h3>
+        <p>Alessandro Villa</p>
+      </div>
+    </div>
+
+  </main>
+
+<!-- MINI JAVASCRIPT PER DIMENSIONE DEI NOMI DEI CORISTI E DEGLI AUTORI, di modo che si adattino a schermi cellulari-->
+  <script>
+  function adattaNomiCoristi() {
+    const contenitore = document.querySelector('.voci');
+
+    if (!contenitore) return;
+
+    const colonne = [...contenitore.children];
+
+    let minimo = 11;
+    let massimo = 20;
+
+    function entrano(dimensione) {
+      contenitore.style.setProperty(
+        '--voci-font-size',
+        dimensione + 'px'
+      );
+
+      return colonne.every(colonna => {
+        const nomi = colonna.querySelector('p');
+
+        return nomi.getBoundingClientRect().width
+          <= colonna.clientWidth;
+      });
+    }
+
+    for (let i = 0; i < 25; i++) {
+      const centro = (minimo + massimo) / 2;
+
+      if (entrano(centro)) {
+        minimo = centro;
+      } else {
+        massimo = centro;
+      }
+    }
+
+    contenitore.style.setProperty(
+      '--voci-font-size',
+      minimo + 'px'
+    );
+  }
+
+  /* rimpicciolisce TUTTI i nomi degli autori insieme, solo se la riga più lunga non entra */
+  function adattaAutori() {
+    const autori = [...document.querySelectorAll('.c')];
+    if (!autori.length) return;
+
+    const radice = document.documentElement;
+    let minimo = 8;     // dimensione minima (px)
+    let massimo = 15;   // dimensione normale (px)
+
+    function entrano(px) {
+      radice.style.setProperty('--autori-font-size', px + 'px');
+      return autori.every(c => c.scrollWidth <= c.clientWidth);
+    }
+
+    if (entrano(massimo)) return;   // tutto entra: nessuna riduzione
+
+    for (let i = 0; i < 20; i++) {
+      const centro = (minimo + massimo) / 2;
+      if (entrano(centro)) minimo = centro;
+      else massimo = centro;
+    }
+    radice.style.setProperty('--autori-font-size', minimo + 'px');
+  }
+
+  function adattaTutto() {
+    adattaNomiCoristi();
+    adattaAutori();
+  }
+
+  window.addEventListener('load', adattaTutto);
+  window.addEventListener('resize', adattaTutto);
+
+  if (document.fonts) {
+    document.fonts.ready.then(adattaTutto);
+  }
+  </script>
+
+</body>
+</html>
